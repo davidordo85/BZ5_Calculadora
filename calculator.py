@@ -119,7 +119,7 @@ class Display(ttk.Frame):
 
         s = ttk.Style()
         s.theme_use('alt')
-        s.configure('my.TLabel', font='Helvetica 36', background='black', foreground='white')
+        s.configure('my.TLabel', font='Helvetica 30', background='black', foreground='white')
 
         self.lbl = ttk.Label(self, text=self.value, anchor=E, style='my.TLabel')
         self.lbl.pack(side=TOP, fill=BOTH, expand=True)
@@ -130,7 +130,23 @@ class Display(ttk.Frame):
                 self.value = algo
             else:
                 self.value += str(algo)
+
+
+        if algo == 'C':
+            self.value = '0'
+        
+
+        if algo =='+/-' and self.value != '0':
+            if self.value[0] == '-':
+                self.value = self.value[1:]
+            else:
+                self.value = '-' + self.value
+
+        if algo == ',' and ',' not in self.value:
+            self.value += str(algo)
+
         self.lbl.config(text=self.value)
+        
 
     
 
