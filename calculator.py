@@ -149,7 +149,7 @@ class Controlator(ttk.Frame):
         if algo == ',' and ',' not in self.dispValue:
             self.dispValue += str(algo)
 
-        if algo == '+':
+        if algo == '+' or algo == '-' or algo =='x' or algo =='÷':
             self.op1 = self.to_float(self.dispValue)
             self.operation = algo
             self.dispValue = '0'
@@ -172,7 +172,7 @@ class Display(ttk.Frame):
 
         s = ttk.Style()
         s.theme_use('alt')
-        s.configure('my.TLabel', font='Helvetica 30', background='black', foreground='white')
+        s.configure('my.TLabel', font='Helvetica 36', background='black', foreground='white')
 
         self.lbl = ttk.Label(self, text=self.value, anchor=E, style='my.TLabel')
         self.lbl.pack(side=TOP, fill=BOTH, expand=True)
